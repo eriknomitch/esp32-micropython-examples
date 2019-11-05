@@ -1,46 +1,29 @@
 import machine
 import neopixel
 import time
+import random
+import math
 
-NP_PIN = 4
-NP_N_LEDS = 16
+NP_PIN = 13
+NP_COUNT = 24
 
 np = neopixel.NeoPixel(machine.Pin(NP_PIN), NP_COUNT)
 
+def chance(percentage):
+    return random.randint(1, 100) >= percentage:
 
 def demo(np):
     n = np.n
 
-    # cycle
-    for i in range(4 * n):
-        for j in range(n):
-            np[j] = (0, 0, 0)
-        np[i % n] = (255, 255, 255)
-        np.write()
-        time.sleep_ms(25)
-
-    # bounce
-    for i in range(4 * n):
-        for j in range(n):
-            np[j] = (0, 0, 128)
-        if (i // n) % 2 == 0:
-            np[i % n] = (0, 0, 0)
-        else:
-            np[n - 1 - (i % n)] = (0, 0, 0)
-        np.write()
-        time.sleep_ms(60)
-
-    # fade in/out
-    for i in range(0, 4 * 256, 8):
-        for j in range(n):
-            if (i // 256) % 2 == 0:
-                val = i & 0xff
-            else:
-                val = 255 - (i & 0xff)
-            np[j] = (val, 0, 0)
-        np.write()
-
-    # clear
     for i in range(n):
-        np[i] = (0, 0, 0)
-    np.write()
+
+        r = 0
+        g = random.randint(0, 255)
+        b = 0
+
+        np[i] = (r, g, b)
+        np.write()
+        time.sleep_ms(10)
+
+while True:
+    demo(np)
