@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+source ~/.configs/zshrc-asdf
+
+# if [[ -z $1 ]] ; then
+#   ampy
+#   exit
+# fi
+
+# ampy --port /dev/tty.SLAB_USBtoUART $*
+
+mpfshell -c "open tty.SLAB_USBtoUART"
+
