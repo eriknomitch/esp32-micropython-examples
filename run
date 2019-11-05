@@ -7,7 +7,15 @@ source ~/.configs/zshrc-asdf
 #   exit
 # fi
 
-# ampy --port /dev/tty.SLAB_USBtoUART $*
+case $1 in
+  s|shell)
+    mpfshell -c "open tty.SLAB_USBtoUART"
+    ;;
+  "")
+    # mpfshell -c "open tty.SLAB_USBtoUART"
+    # ampy --port /dev/tty.SLAB_USBtoUART $*
+    mpfshell -n --command "open tty.SLAB_USBtoUART; put boot.py"
+  ;;
+esac
 
-mpfshell -c "open tty.SLAB_USBtoUART"
 

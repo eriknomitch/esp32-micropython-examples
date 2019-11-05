@@ -106,3 +106,4 @@ venv.bak/
 
 env.py
 webrepl_cfg.py
+boot.py
